@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := S43_MANUAL
+BUILD_ARTIFACT_NAME := smart_insole_October2023
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-S43_MANUAL.elf \
+smart_insole_October2023.elf \
 
 MAP_FILES += \
-S43_MANUAL.map \
+smart_insole_October2023.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-S43_MANUAL.list \
+smart_insole_October2023.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: S43_MANUAL.elf secondary-outputs
+main-build: smart_insole_October2023.elf secondary-outputs
 
 # Tool invocations
-S43_MANUAL.elf S43_MANUAL.map: $(OBJS) $(USER_OBJS) C:\Users\koechli\Desktop\For\ Christian\ -\ BRIDGE\STM32\ code\S43_MANUAL-20230127T134743Z-001\S43_MANUAL\STM32U585QIIX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "S43_MANUAL.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\Users\koechli\Desktop\For Christian - BRIDGE\STM32 code\S43_MANUAL-20230127T134743Z-001\S43_MANUAL\STM32U585QIIX_FLASH.ld" --specs=nosys.specs -Wl,-Map="S43_MANUAL.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+smart_insole_October2023.elf smart_insole_October2023.map: $(OBJS) $(USER_OBJS) C:\Users\ntella\STM32CubeIDE\workspace_1.4.0\smart_insole_October2023\STM32U585VITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "smart_insole_October2023.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\Users\ntella\STM32CubeIDE\workspace_1.4.0\smart_insole_October2023\STM32U585VITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="smart_insole_October2023.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,14 +70,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-S43_MANUAL.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "S43_MANUAL.list"
+smart_insole_October2023.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "smart_insole_October2023.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) S43_MANUAL.elf S43_MANUAL.list S43_MANUAL.map default.size.stdout
+	-$(RM) default.size.stdout smart_insole_October2023.elf smart_insole_October2023.list smart_insole_October2023.map
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
